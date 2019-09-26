@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content'ie=edge'>
+    <title>Vue Converter</title>
+		<link rel='stylesheet' href='style.css'>
+</head>
+
+<body>
+    <div id="app">
+
+    <header>
+        <dropdown 
+					:options="options"
+					@selected="newOption"/>
+        </header>
+    
+        <main>      
+    
+        <div class="distance"  v-if="selectedOption.value === 'distance'">
+            <div class="imperial">
+            <divisor label="Miles"
+                        v-model="mi"
+                        @input="convertMiles"></divisor>   
+            <divisor label="Yards"
+                        v-model="yd"
+                        @input="convertYards"></divisor>
+            <divisor label="Feet"
+                        v-model="ft"
+                        @input="convertFeet"></divisor>
+            <divisor label="Inches"
+                        v-model="inch"
+                        @input="convertInches"></divisor>
+            </div>
+    
+            <div class="metric">
+            <divisor label="Km"
+                        v-model="km"
+                        @input="convertKilometers"></divisor>
+            <divisor label="Meters"
+                        v-model="m"
+                        @input="convertMeters"></divisor>
+            <divisor label="Cm"
+                        v-model="cm"
+                        @input="convertCentimeters"></divisor>
+            </div>
+        </div> <!-- distance -->
+    
+    
+        <div class="weight" v-if="selectedOption.value === 'weight'">
+            <div class="imperial">
+            <divisor label="Pounds"
+                        v-model="lb"
+                        @input="convertPounds"></divisor>   
+            <divisor label="Ounces"
+                        v-model="oz"
+                        @input="convertOunces"></divisor>
+            </div>
+    
+            <div class="metric">
+            <divisor label="Kg"
+                        v-model="kg"
+                        @input="convertKilograms"></divisor>
+            <divisor label="Grams"
+                        v-model="g"
+                        @input="convertGrams"></divisor>
+            <divisor label="Stone"
+                        v-model="st"
+                        @input="convertStones"></divisor>
+            </div>
+        </div> <!-- weight -->
+    
+    
+        <div class="speed" v-if="selectedOption.value === 'speed'">
+        
+            <div class="scale">
+            <divisor label="Mph"
+                        v-model="mph"
+                        @input="convertMPH"></divisor>
+            <divisor label="Km / h"
+                        v-model="kph"
+                        @input="convertKPH"></divisor>
+            <divisor label="Knots"
+                        v-model="knots"
+                        @input="convertKnots"></divisor>
+            <divisor label="Mach"
+                        v-model="mach"
+                        @input="convertMach"></divisor>
+            </div>
+        </div> <!-- speed -->
+    
+    
+        <div class="temperature" v-if="selectedOption.value === 'temperature'">
+        
+            <div class="scale">
+            <divisor label="Fahrenheit"
+                        v-model="f"
+                        @input="convertF"></divisor>
+            <divisor label="Celcius"
+                        v-model="c"
+                        @input="convertC"></divisor>
+            <divisor label="Kelvin"
+                        v-model="k"
+                        @input="convertK"></divisor>
+            </div>
+        </div> <!-- speed -->
+    
+        </main>
+    </div>
+    
+
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src='index.js'></script>
+
+        
+
+</body>
+</html>
