@@ -95,7 +95,26 @@
               @input="convertK"></divisor>
           </div>
         </div>
-        <!-- speed -->
+        <!-- temperature -->
+        <div class="time" v-if="selectedOption.value === 'time'"> 
+          <div class="scale">
+            <divisor label="Years"
+                      v-model="yr"
+                      @input="convertYears"></divisor>
+            <divisor label="Days"
+                      v-model="day"
+                      @input="convertDays"></divisor>
+            <divisor label="Hours"
+                      v-model="hr"
+                      @input="convertHours"></divisor>
+            <divisor label="Minutes"
+                      v-model="mn"
+                      @input="convertMinutes"></divisor>
+            <divisor label="Seconds"
+                      v-model="sec"
+                      @input="convertSeconds"></divisor>
+          </div>
+        </div> <!-- time -->
       </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
