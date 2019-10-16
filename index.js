@@ -121,6 +121,10 @@ const app = new Vue(
     {
       value: "temperature",
       name: "Temperature"
+    },      
+    {
+      value: "time", 
+      name: "Time"
     }],
     selectedOption:
     {},
@@ -144,6 +148,11 @@ const app = new Vue(
     f: 32,
     c: 0,
     k: 0,
+    yr: 1,
+    day: 0,
+    hr: 0,
+    mn: 0,
+    sec: 0,
   },
   methods:
   {
@@ -165,6 +174,9 @@ const app = new Vue(
           break;
         case "temperature":
           this.convertF();
+          break;
+        case "time":
+           this.convertYears();
           break;
         default:
           // code block
@@ -334,6 +346,43 @@ const app = new Vue(
       this.c = parseFloat((this.k - 273.15).toFixed(2));
     },
     // #endregion temperature    
+
+    // #region time
+    convertYears() {
+      this.day = parseFloat((this.yr*365.25).toFixed(2));
+      this.hr = parseFloat((this.yr*8766).toFixed(2));
+      this.mn = parseFloat((this.yr*525960).toFixed(2));
+      this.sec = parseFloat((this.yr*31557600).toFixed(2));
+    },
+
+    convertDays() {
+      this.yr = parseFloat((this.day*0.002737850787132).toFixed(2));
+      this.hr = parseFloat((this.day*24).toFixed(2));
+      this.mn = parseFloat((this.day*1440).toFixed(2));
+      this.sec = parseFloat((this.day*86400).toFixed(2));
+    }, 
+
+    convertHours() {
+      this.yr = parseFloat((this.hr*0.000114077116131).toFixed(2));
+      this.day = parseFloat((this.hr*0.041666666666667).toFixed(2));
+      this.mn = parseFloat((this.hr*60).toFixed(2));
+      this.sec = parseFloat((this.hr*3600).toFixed(2));
+    }, 
+
+    convertMinutes() {
+      this.yr = parseFloat((this.mn*0.000001901285269).toFixed(2));
+      this.day = parseFloat((this.mn*0.000694444444444).toFixed(2));
+      this.hr = parseFloat((this.mn*0.016666666666667).toFixed(2));
+      this.sec = parseFloat((this.mn*60).toFixed(2));
+    },   
+
+    convertSeconds() {
+      this.yr = parseFloat((this.sec*0.000000031688088).toFixed(2));
+      this.day = parseFloat((this.sec*0.0000115740740740741).toFixed(2));
+      this.hr = parseFloat((this.sec*0.000277777777778).toFixed(2));
+      this.mn = parseFloat((this.sec*0.016666666666667).toFixed(2));
+    },  
+    // #endregion time      
 
   },
   mounted()
